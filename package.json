@@ -1,0 +1,79 @@
+{
+  "name": "@fellipeutaka/ts-init",
+  "version": "1.0.0",
+  "description": "A CLI to initialize a TypeScript project",
+  "sideEffects": false,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fellipeutaka/ts-init"
+  },
+  "bugs": {
+    "url": "https://github.com/fellipeutaka/ts-init/issues"
+  },
+  "homepage": "https://github.com/fellipeutaka/ts-init",
+  "files": [
+    "dist/**"
+  ],
+  "keywords": [
+    "typescript",
+    "cli",
+    "init"
+  ],
+  "bin": "./dist/bin.js",
+  "main": "./dist/bin.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/bin.ts",
+    "build": "tsup",
+    "start": "node .",
+    "test": "vitest",
+    "version-packages": "changeset version",
+    "release": "tsup && changeset publish",
+    "clean": "rimraf node_modules dist",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "inquirer": "8.0.0"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/cz-commitlint": "^18.2.0",
+    "@fellipeutaka/eslint-config": "^1.12.2",
+    "@types/inquirer": "^9.0.6",
+    "@types/node": "^20.8.10",
+    "commitizen": "^4.3.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "tsup": "^7.2.0",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "vitest related --run --bail",
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{md,json}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  }
+}
